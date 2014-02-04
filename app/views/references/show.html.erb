@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Referee name:</strong>
+  <%= @reference.referee_name %>
+</p>
+
+<p>
+  <strong>Comany:</strong>
+  <%= @reference.comany %>
+</p>
+
+<p>
+  <strong>Referee position:</strong>
+  <%= @reference.referee_position %>
+</p>
+
+<p>
+  <strong>Years known:</strong>
+  <%= @reference.years_known %>
+</p>
+
+<%= link_to 'Edit', edit_reference_path(@reference) %> |
+<%= link_to 'Back', references_path %>

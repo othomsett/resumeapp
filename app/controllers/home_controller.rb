@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @contact_info = ContactInfo.first
+    @jobs = Job.all
+    @references = Reference.all
   end
 end

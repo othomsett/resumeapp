@@ -1,4 +1,45 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<h1><%= @contact_info.first_name %> <%= @contact_info.last_name %>'s Contact Info</h1>
+
+<p><strong>Call me:</strong> <%= @contact_info.phone %></p>
+
+<p><strong>Email me:</strong> <%= @contact_info.email %></p>
+
+<p><strong>Follow me:</strong> <%= link_to @contact_info.twitter, 'https://twitter.com/' + @contact_info.twitter, class: 'btn btn-success' %></p>
+
+<%= image_tag @contact_info.profile_pic, width: '200px' %>
+
+<% if user_signed_in? %>
+    <%= link_to "Edit my info", edit_contact_info_path(@contact_info) %>
 <% end %>
+
+
+<% if @jobs %>
+    <h2>Work history</h2>
+    <% @jobs.each do |job| %>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p class="panel-title"><h3><%= job.position %> at <%= job.company %></h3></p>
+            </div>
+            <div class="panel-body">
+                <p><strong><%= job.start_date %> to <%= job.end_date %></strong></p>
+                <p><%= job.summary %></p>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+
+<% if @references %>
+	<h2>References</h2>
+	<% @references.each do |references| %>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<p class="panel-title"><h3><%= references.referee_name %></h3></p>
+			</div>
+			<div class="panel-body">
+				<p><strong><%=	references.referee_position %> at <%= references.comany %></strong></p>
+				<p><%= references.years_known %></p>
+			</div>
+		</div>
+	<% end %>
+<% end %>					
