@@ -16,5 +16,15 @@
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
+    <footer>
+    
+            <% if !user_signed_in?%>
+              <a href="/users/sign_in" ><i class="fa fa-sign-in"></i></a>
+            <% else %>
+              <%= link_to destroy_user_session_path, method: "delete" do %><i class="fa fa-sign-out"></i><% end %>
+            <% end %> 
+            
+          </ul>
+    </footer>
   </body>
 </html>

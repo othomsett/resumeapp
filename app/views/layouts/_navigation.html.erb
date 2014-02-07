@@ -1,6 +1,6 @@
 <%# navigation styled for Bootstrap 3.0 %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+    <div class="container" >
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -8,12 +8,35 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
+      
+
+
+        <center><h1><%= @contact_info.first_name %> <%= @contact_info.last_name %></h1>
+            <% if user_signed_in?  %>  <%= link_to root_path, class: 'btn btn-lg btn-warning navbar-btn' do %>
+            <i class="fa fa-home fa-lg"></i>
+        <% end %>
+        <% end %>
+      
+        <a href="tel:<%= @contact_info.phone %>" class= 'btn btn-lg btn-warning navbar-btn'>
+            <i class="fa fa-phone-square fa-lg"></i>
+        </a>            
+
+        <%= mail_to @contact_info.email, class: 'btn btn-lg btn-warning navbar-btn' do %>
+        <i class="fa fa-envelope fa-lg"></i>
+        <% end %>            
+
+        <%= link_to @contact_info.linkedin, class: 'btn btn-lg btn-warning navbar-btn', target: "_blank" do %>
+        <i class="fa fa-linkedin-square fa-lg"></i>
+        <% end %>            
+
+       <%= link_to @contact_info.twitter, class: 'btn btn-lg btn-warning navbar-btn', target: "_blank" do %>
+        <i class="fa fa-twitter-square fa-lg"></i>
+        <% end %>
+        </center>
+        
+
     </div>
   </div>
 </nav>

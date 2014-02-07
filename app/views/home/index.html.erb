@@ -1,16 +1,15 @@
-<h1><%= @contact_info.first_name %> <%= @contact_info.last_name %>'s Contact Info</h1>
+<br>
+<br>
+<br>
+<br>
 
-<p><strong>Call me:</strong> <%= @contact_info.phone %></p>
-
-<p><strong>Email me:</strong> <%= @contact_info.email %></p>
-
-<p><strong>Follow me:</strong> <%= link_to @contact_info.twitter, 'https://twitter.com/' + @contact_info.twitter, class: 'btn btn-success' %></p>
-
-<%= image_tag @contact_info.profile_pic, width: '200px' %>
+<%= image_tag @contact_info.profile_pic, width: '200px', image: 'circle' %>
 
 <% if user_signed_in? %>
-    <%= link_to "Edit my info", edit_contact_info_path(@contact_info) %>
+    <button type="button"><%= link_to "Edit my info", admin_index_path(@admin_index) %></button>
 <% end %>
+
+<br>
 
 
 <% if @jobs %>
@@ -18,11 +17,11 @@
     <% @jobs.each do |job| %>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <p class="panel-title"><h3><%= job.position %> at <%= job.company %></h3></p>
+                <p class="panel-title"><h3><%= job.position %> at <u><%= link_to job.company, job.website, target: "_blank" %></u></h3></p>
             </div>
             <div class="panel-body">
-                <p><strong><%= job.start_date %> to <%= job.end_date %></strong></p>
-                <p><%= job.summary %></p>
+                <p><strong><%= job.start_date.strftime('%e %h %Y') %> to <%= job.end_date.strftime('%e %h %Y') %></strong></p>
+                <p><%= job.summary.html_safe %></p>
             </div>
         </div>
     <% end %>
@@ -31,14 +30,28 @@
 
 <% if @references %>
 	<h2>References</h2>
-	<% @references.each do |references| %>
+	<% @references.each do |reference| %>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<p class="panel-title"><h3><%= references.referee_name %></h3></p>
+				<p class="panel-title"><h3><%= reference.referee_name %></h3></p>
 			</div>
 			<div class="panel-body">
-				<p><strong><%=	references.referee_position %> at <%= references.comany %></strong></p>
-				<p><%= references.years_known %></p>
+				<p><strong><%=	reference.referee_position %> at <%= reference.comany %></strong></p>
+				<p><strong>Years Known:</strong><%= reference.years_known %></p>
+                
+                <p><a href="tel:<%= reference.phone %>", class= 'btn btn-lg btn-warning'>
+                    <i class="fa fa-phone-square fa-lg"></i>
+                    </a>            
+                </p>
+                <p><%= mail_to reference.phone, target: "_blank", class: 'btn btn-lg btn-warning' do %>
+                   <i class="fa fa-envelope fa-lg"></i>
+                    <% end %>            
+                </p>
+                <p><%= link_to reference.linkedin, target: "_blank", class: 'btn btn-lg btn-warning' do %>
+                   <i class="fa fa-linkedin-square fa-lg"></i>
+                    <% end %>            
+                </p>
+
 			</div>
 		</div>
 	<% end %>

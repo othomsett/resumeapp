@@ -7,9 +7,9 @@
       <th>Comany</th>
       <th>Referee position</th>
       <th>Years known</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Linkedin</th>
     </tr>
   </thead>
 
@@ -20,9 +20,12 @@
         <td><%= reference.comany %></td>
         <td><%= reference.referee_position %></td>
         <td><%= reference.years_known %></td>
-        <td><%= link_to 'Show', reference %></td>
-        <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
-        <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= reference.phone %></td>
+        <td><%= reference.email %></td>
+        <td><%= reference.linkedin %></td>
+          <td><%= link_to 'Show', reference %></td>
+          <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
+          <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

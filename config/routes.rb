@@ -1,4 +1,5 @@
 Resumeapp::Application.routes.draw do
+  get "admin/index"
   resources :references
 
   resources :jobs

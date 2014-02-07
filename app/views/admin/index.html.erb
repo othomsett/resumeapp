@@ -1,0 +1,79 @@
+<h1>Admin panel for Ollie's resumé</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h2>My contact info</h2>
+        <%= render 'contact_infos/form' %>
+    </div>
+    <div class="col-md-6">
+    	<h2>My Jobs</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Position</th>
+      <th>Summary</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.company %></td>
+        <td><%= job.start_date %></td>
+        <td><%= job.end_date %></td>
+        <td><%= job.position %></td>
+        <td><%= job.summary %></td>
+        <td><%= link_to 'Show', job %></td>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button type="button"><%= link_to 'New Job', new_job_path %></button>
+    </div>
+    <div class="col-md-6">
+    	<h2>My References</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Referee name</th>
+      <th>Comany</th>
+      <th>Referee position</th>
+      <th>Years known</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @references.each do |reference| %>
+      <tr>
+        <td><%= reference.referee_name %></td>
+        <td><%= reference.comany %></td>
+        <td><%= reference.referee_position %></td>
+        <td><%= reference.years_known %></td>
+        <td><%= link_to 'Show', reference %></td>
+        <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
+        <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button type="button"><%= link_to 'New Reference', new_reference_path %></button>
+    </div>
+</div>
