@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse">
       
 
-
+    <% if @contact_info %>
         <center><h1><%= @contact_info.first_name %> <%= @contact_info.last_name %></h1>
             <% if user_signed_in?  %>  <%= link_to root_path, class: 'btn btn-lg btn-warning navbar-btn' do %>
             <i class="fa fa-home fa-lg"></i>
@@ -35,7 +35,8 @@
         <i class="fa fa-twitter-square fa-lg"></i>
         <% end %>
         </center>
-        
+       
+    <% end %>
 
     </div>
   </div>

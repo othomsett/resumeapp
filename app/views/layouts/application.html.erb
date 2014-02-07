@@ -9,7 +9,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <% if @contact_info %>
+  
     <header>
       <%= render 'layouts/navigation' %>
     </header>
@@ -27,8 +27,6 @@
             
           </ul>
     </footer>
-    <% else %>
-      <%= link_to 'Create your profile', new_contact_info_path %>
-    <% end %>
+  
   </body>
 </html>
