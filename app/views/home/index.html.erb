@@ -2,7 +2,7 @@
 <br>
 <br>
 <br>
-
+<% if @contact_info %>
 <%= image_tag @contact_info.profile_pic, width: '200px', image: 'circle' %>
 
 <% if user_signed_in? %>
@@ -26,6 +26,9 @@
         </div>
     <% end %>
 <% end %>
+  <% else %>
+      <%= link_to 'Create your profile', new_contact_info_path %>
+    <% end %>
 
 
 <% if @references %>
