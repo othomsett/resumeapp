@@ -3,7 +3,7 @@
 <br>
 <br>
 <% if @contact_info %>
-<%= image_tag @contact_info.profile_pic, width: '200px', image: 'circle' %>
+<%= image_tag @contact_info.profile_pic, width: '200px', class: 'img-rounded' %>
 
 <% if user_signed_in? %>
     <button type="button"><%= link_to "Edit my info", admin_index_path(@admin_index) %></button>
