@@ -42,18 +42,19 @@
 				<p><strong><%=	reference.referee_position %> at <%= reference.comany %></strong></p>
 				<p><strong>Years Known:</strong><%= reference.years_known %></p>
                 
-                <p><a href="tel:<%= reference.phone %>", class= 'btn btn-lg btn-warning'>
+                <a href="tel:<%= reference.phone %>", class= 'btn btn-lg btn-warning'>
                     <i class="fa fa-phone-square fa-lg"></i>
                     </a>            
-                </p>
-                <p><%= mail_to reference.phone, target: "_blank", class: 'btn btn-lg btn-warning' do %>
+                
+                <%= mail_to reference.phone, target: "_blank", class: 'btn btn-lg btn-warning' do %>
                    <i class="fa fa-envelope fa-lg"></i>
                     <% end %>            
-                </p>
-                <p><%= link_to reference.linkedin, target: "_blank", class: 'btn btn-lg btn-warning' do %>
-                   <i class="fa fa-linkedin-square fa-lg"></i>
-                    <% end %>            
-                </p>
+                
+                <% if !reference.linkedin.blank? %>
+                    <%= link_to reference.linkedin, target: "_blank", class: 'btn btn-lg btn-warning' do %>
+                    <i class="fa fa-linkedin-square fa-lg"></i>
+                    <% end %>    
+                <% end %>            
 
 			</div>
 		</div>
