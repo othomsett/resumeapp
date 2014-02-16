@@ -2,8 +2,46 @@
 <br>
 <br>
 <br>
-<% if @contact_info %>
-<%= image_tag @contact_info.profile_pic, width: '200px', class: 'img-rounded' %>
+<br>
+
+
+
+
+
+ <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          
+        <% if @contact_info %>
+            <%= image_tag @contact_info.profile_pic, width: '200px', height: '200px', class: "img-circle", alt: "Profile picture" %>
+
+          <h2>Heading</h2>
+          <p>text here</p>
+
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+
+        <div class="col-lg-4">
+
+            <%= image_tag "placeholder1.jpg", width: '200px', class: "img-circle", alt: "Placeholder Image" %>
+          <h2>Heading</h2>
+          <p>text here</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+
+        <div class="col-lg-4">
+         <%= image_tag "placeholder1.jpg", width: '200px', class: "img-circle", alt: "Placeholder Image" %>
+          <h2>Heading</h2>
+          <p>text here</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+
+
 
 <% if user_signed_in? %>
     <button type="button"><%= link_to "Edit my info", admin_index_path(@admin_index) %></button>
